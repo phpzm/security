@@ -24,8 +24,8 @@
   ],
   "require": {
     "php": ">=7.0",
-    "phpzm/helper": "dev-master",
-    "phpzm/http": "dev-master"
+    "phpzm/helper": ">=1.0.3",
+    "phpzm/http": ">=1.0.5"
   },
   "autoload": {
     "psr-4": {
