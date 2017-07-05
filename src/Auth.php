@@ -66,11 +66,11 @@ abstract class Auth
 
     /**
      * Add an user to Auth Session
-     * @param array $user
+     * @param mixed $data
      */
-    public static function register(array $user)
+    public static function register($data)
     {
-        static::$data = $user;
+        static::$data = $data;
     }
 
     /**
