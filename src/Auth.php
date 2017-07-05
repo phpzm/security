@@ -11,9 +11,9 @@ use Simples\Http\Kernel\App;
 abstract class Auth
 {
     /**
-     * @var string
+     * @var array
      */
-    const PAYLOAD_USER = 'user', PAYLOAD_DEVICE = 'device';
+    private static $data;
 
     /**
      * @param string $password
@@ -43,18 +43,12 @@ abstract class Auth
     }
 
     /**
-     * @param string $user
-     * @param string $device
      * @param array $options
      * @return string
      */
-    public static function createToken(string $user, string $device, array $options = []): string
+    public static function createToken(array $options = []): string
     {
-        $data = [
-            self::PAYLOAD_USER => $user,
-            self::PAYLOAD_DEVICE => $device
-        ];
-        return JWT::create(array_merge($options, $data), env('SECURITY'));
+        return JWT::create($options, env('SECURITY'));
     }
 
     /**
@@ -71,18 +65,37 @@ abstract class Auth
     }
 
     /**
-     * @return string
+     * Add an user to Auth Session
+     * @param array $user
      */
-    public static function getUser(): string
+    public static function register(array $user)
     {
-        return self::getTokenValue(self::PAYLOAD_USER);
+        static::$data = $user;
     }
 
     /**
-     * @return string
+     * Remove the user of Auth Session
      */
-    public static function getDevice(): string
+    public static function unRegister()
     {
-        return self::getTokenValue(self::PAYLOAD_DEVICE);
+        static::$data = null;
     }
+
+    /**
+     * @return array
+     */
+    public static function getAll(): array
+    {
+        return static::$data;
+    }
+
+    /**
+     * @param string $property
+     * @return mixed
+     */
+    public static function get(string $property)
+    {
+        return static::$data[$property] ?? null;
+    }
+
 }
