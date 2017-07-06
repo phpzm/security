@@ -91,11 +91,12 @@ abstract class Auth
 
     /**
      * @param string $property
+     * @param mixed $default
      * @return mixed
      */
-    public static function get(string $property)
+    public static function get(string $property, $default = null)
     {
-        return static::$data[$property] ?? null;
+        return static::$data[$property] ?? $default;
     }
 
 }
