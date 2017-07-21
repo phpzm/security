@@ -10,7 +10,7 @@
   ],
   "homepage": "https://github.com/phpzm/security",
   "license": "MIT",
-  "version": "1.4.9",
+  "version": "1.4.10",
   "type": "package",
   "authors": [
     {
@@ -24,8 +24,8 @@
   ],
   "require": {
     "php": ">=7.0",
-    "phpzm/helper": "^1.5.8",
-    "phpzm/http": "^1.5.8"
+    "phpzm/helper": "^1.5.9",
+    "phpzm/http": "^1.5.9"
   },
   "autoload": {
     "psr-4": {
